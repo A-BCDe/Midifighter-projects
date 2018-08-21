@@ -34,27 +34,25 @@ namespace Midifighter64InputTest1.MidiDevice_Test1
             Console.ReadKey();
         }
 
-        private void Input_NoteOff(NoteOffMessage msg)
+        protected virtual void Input_NoteOff(NoteOffMessage msg)
         {
             Console.WriteLine(msg.Pitch + "released");
-            output.SendNoteOff(OutputChannel, msg.Pitch, 127);
         }
 
-        private void Input_NoteOn(NoteOnMessage msg)
+        protected virtual void Input_NoteOn(NoteOnMessage msg)
         {
             Console.WriteLine(msg.Pitch + "pressed");
-            output.SendNoteOff(OutputChannel, msg.Pitch, 0);
         }
 
         ~MidiDeviceBase_Test1()
         {
-            input.Close();
-            output.Close();
+            if (input != null) input.Close();
+            if (output != null) output.Close();
         }
 
         public static class Build
         {
-            public static void SelectMidiDevice()
+            public static Channel[] SelectMidiDevice()
             {
                 Channel[] channel = new Channel[2] { 0, 0 };
                 int inMidiChannelCount = InputDevice.InstalledDevices.Count;
@@ -101,6 +99,8 @@ namespace Midifighter64InputTest1.MidiDevice_Test1
                             throw new Exception("Error : SelectMidiInputDevice");
                     }
                 }
+
+                return channel;
             }
         }
     }
