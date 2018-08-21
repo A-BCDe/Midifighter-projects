@@ -16,7 +16,7 @@ namespace Midifighter64InputTest1.MidiDevice_Test1
         protected OutputDevice output;
         public Channel InputChannel
         {
-            get;
+            get; 
             protected set;
         }
         public Channel OutputChannel
