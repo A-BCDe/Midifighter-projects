@@ -36,7 +36,7 @@ namespace Midifighter64InputTest1.MidiDevice_Test1.Midifighter_Test1
             output.Open();
         }
 
-        public Midifighter64_Test1(Channel inputChannel,Channel outputChannel)
+        public Midifighter64_Test1(Channel inputChannel, Channel outputChannel)
         {
             midifighterType = MidifighterType.Midifighter64;
             input = InputDevice.InstalledDevices[(int)(InputChannel = inputChannel)];
@@ -45,12 +45,7 @@ namespace Midifighter64InputTest1.MidiDevice_Test1.Midifighter_Test1
             if (input != null) input.Open();
             if (output != null) output.Open();
         }
-        /*
-        ~Midifighter64_Test1()
-        {
-            input.Close();
-            output.Close();
-        }
-        */
+
+
     }
 }
